@@ -1,0 +1,29 @@
+
+    <!DOCTYPE html>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <html lang=eng>    
+        <div id="top-bar">
+        <h2> Stock Analysis </h2>
+    <nav class="topnav">
+    <a class="active" href="{{ url_for('index') }}">Home</a>
+    <a
+    href="{{ url_for('company') }}">
+    Company Home</a>
+    <a
+    href="{{ url_for('company') }}">Analysis</a>
+    </nav>
+</div>
+      <h3 class="market-performance">Market Performance</h3>
+      <div class="content">
+      <h3 class="market-news">Market News</h3>
+        <ul class="market-news">
+            {% for i in range(0, size) %}
+            <li id="actual-stories">
+                <a id="dates">{{dates[i]}} :</a>
+                <a id="url" href="{{links[i]}}">{{headlines[i]}}</a>
+            </li>
+            {%endfor%}
+        </ul>
+      <h3 class="projected-top-performers">Projected Top Performers</h3>
+      </div>
+      </html>
