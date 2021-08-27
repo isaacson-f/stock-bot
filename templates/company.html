@@ -1,0 +1,25 @@
+<html>
+  <nav>
+    <h1>
+      Company Overview
+    </h1>
+    <a href="{{ url_for('index') }}"inde>Home</a>
+    <a class="active" href="{{ url_for('company') }}">Company Info</a>
+  </nav>
+  <form action="" method="get"> Input Company
+    <input type="text" name="company">
+    <input type="submit" value="Find Data">
+  </form>
+  <h3>Company News</h3>
+  <ul class="market-news">
+    {% for i in range(0, size) %}
+    <li id="actual-stories">
+        <a id="dates">{{dates[i]}} :</a>
+        <a id="url" href="{{links[i]}}">{{headlines[i]}}</a>
+    </li>
+    {%endfor%}
+</ul>
+  <h2>
+    {{ ticker }} {{ stock_price }}
+  </h2>
+</html>
