@@ -114,7 +114,7 @@ class Market_Info:
         return self._get_info('category', amount)
 
 class Insider_Transactions:
-    def __init(finnhub_client, company_ticker):
+    def __init__(self, finnhub_client, company_ticker):
         self.__insider_transactions = finnhub_client.stock_insider_transactions(company_ticker)
         self.__data : List[dict] = self.__insider_transactions.get('data')
         self.__names : str = self.__date.get('name')
