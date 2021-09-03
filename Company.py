@@ -53,7 +53,7 @@ class Company_Info:
 
 class Market_Info:
     def __init__(self, finnhub_client, info_category : str):
-        if info_category == "general" or info_category =="forex" or info_category == "crypto" or info_category == "merger":
+        if info_category == "general" or info_category == "forex" or info_category == "crypto" or info_category == "merger":
             self.__news_stories = finnhub_client.general_news(info_category, min_id=0)
         else:
             today = datetime.today()
@@ -357,7 +357,7 @@ class Market:
         return yf.Ticker('^TYX').info['regularMarketPrice']
 
     @classmethod
-    def _get_inflation_rate(self, url):
+    def _get_inflation_rate(cls, url):
         r = requests.get(url)
         soup = bs(r.content, 'html.parser')
         ans = soup.select_one('span.series-meta-observation-value')
@@ -401,7 +401,7 @@ class Market:
                 all_companies.append(stock)
                 companies.update({tags[i].text: [tags[i+1].text, tags[i+2].text]})
                 i+=11
-            button = driver.find_elements_by_class_name('ButtonTertiary-oygnqq-0.ButtonArrow__Button-vkbpol-0.cVYnmK.fnfpCw')
+            button = driver.find_elements_by_class_name('ButtonTertiary-oygnqq-0.ButtonArrow__Button-vkbpol-0.dIkTbb.bYMVUV')
             ActionChains(driver).move_to_element(button[1]).click(button[1]).perform()
         driver.quit()
         return companies    
