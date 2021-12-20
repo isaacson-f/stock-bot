@@ -6,7 +6,7 @@
     <a href="{{ url_for('index') }}"inde>Home</a>
     <a class="active" href="{{ url_for('company') }}">Company Info</a>
   </nav>
-  <form action="" method="get"> Input Company
+  <form action="" method="get"> Input Company Ticker Symbol(Loads in approximately 10 seconds)
     <input type="text" name="company">
     <input type="submit" value="Find Data">
   </form>
@@ -22,4 +22,7 @@
   <h2>
     {{ ticker }} {{ stock_price }}
   </h2>
+  <h3>
+    CAPM Analysis: {{ capm }}
+  </h3>
 </html>

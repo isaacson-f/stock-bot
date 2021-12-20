@@ -16,21 +16,26 @@ def index():
 @app.route("/company")
 def company():
     company = request.args.get("company", "")
+    stock_price1 = ""
+    company_ticker = ""
+    headlines1=[]
+    capm_analysis = ""
+    links1 =[]
+    dates1 = []
     if company:
         setup_company = info_from(company)
-        stock_price1 = setup_company.stock_price
-        company_ticker = setup_company.company_name
-        headlines1 = setup_company.company_info.get_story_headlines(10)
-        links1 = setup_company.company_info.get_url(10)
-        dates1 = setup_company.company_info.get_story_datetimes(10)
-    else:
-        stock_price1 = ""
-        company_ticker = ""
-        headlines1=[]
-        links1 =[]
-        dates1 = []
+        try:
+            stock_price1 = setup_company.stock_price
+            company_ticker = setup_company.company_name
+            capm_analysis = setup_company.capm_expected_return
+            #headlines1 = setup_company.company_info.get_story_headlines(10)
+            #links1 = setup_company.company_info.get_url(10)
+            dates1 = setup_company.company_info.get_story_datetimes(10)
+        except AttributeError:
+            company_ticker = "INVALID COMPANY"    
     return  render_template("company.html", stock_price = stock_price1, 
-    ticker = company_ticker, headlines = headlines1, links=links1, size=len(headlines1), dates=dates1)    
+    ticker = company_ticker, headlines = headlines1, links=links1, size=len(headlines1), 
+    dates=dates1, capm=capm_analysis)
 
 def info_from(company) -> code.Company:
     """Get companies info."""

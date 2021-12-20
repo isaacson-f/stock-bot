@@ -317,11 +317,11 @@ class Company:
         if year not in valid_years:
             raise ValueError('Year must be one of %r' % valid_years)
         if year is 5:
-            return market_object.get_5_year_treasury_yield - float(market_object.get_5_year_inflation_rate)
+            return market_object.get_5_year_treasury_yield() - float(market_object.get_5_year_inflation_rate())
         elif year is 10:
-            return market_object.get_10_year_treasury_yield - float(market_object.get_10_year_inflation_rate)
+            return market_object.get_10_year_treasury_yield() - float(market_object.get_10_year_inflation_rate())
         elif year is 30:
-            return market_object.get_30_year_treasury_yield - float(market_object.get_30_year_inflation_rate)
+            return market_object.get_30_year_treasury_yield() - float(market_object.get_30_year_inflation_rate())
 
     def __get_beta_value(self):
         """ Returns a list of each free cash flow value of this company given the years desired. If no years are inputted
@@ -341,7 +341,7 @@ class Market:
     def __init__(self):
         finnhub_client = finnhub.Client(api_key="c3l3vkqad3idu4kfrh1g")
         self.market_info = Market_Info(finnhub_client, 'general')
-        self.stocks_in_market = Market.get_all_companies()
+        #self.stocks_in_market = Market.get_all_companies()
         self.s_p_500 = Market.get_s_p_500_companies()
 
     @staticmethod  

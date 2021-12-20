@@ -23,7 +23,7 @@ class Cash_Flow:
         """
         if ticker is None:
             raise ValueError('Ticker cannot be none')
-        self.__cash_flow : DataFrame = ticker.get_cashflow()
+        self.__cash_flow : pd.DataFrame = ticker.get_cashflow()
         self.__investing_activities: dict[int:int] = self._value('Total Cashflows From Investing Activities')
         self.__financing_activites : dict[int:int] = self._value('Total Cash From Financing Activities')
         self.__operating_activities : dict[int:int] = self._value('Total Cash From Operating Activities')
@@ -41,7 +41,7 @@ class Cash_Flow:
         return str(self.__cash_flow)
 
     def _value(self, row_name : str) -> dict:
-        """ Returns a dictionary of the row under the provided row name
+        """ Returns a dictionary of the row under the provided row name (year : value)
 
             Args:
                 row_name: The row to be returned as a dictionary with each column as a key.
