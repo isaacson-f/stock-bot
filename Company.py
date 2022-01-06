@@ -341,7 +341,7 @@ class Market:
     def __init__(self):
         finnhub_client = finnhub.Client(api_key="c3l3vkqad3idu4kfrh1g")
         self.market_info = Market_Info(finnhub_client, 'general')
-        #self.stocks_in_market = Market.get_all_companies()
+        self.stocks_in_market = Market.get_all_companies()
         self.s_p_500 = Market.get_s_p_500_companies()
 
     @staticmethod  
